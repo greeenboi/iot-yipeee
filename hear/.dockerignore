@@ -1,0 +1,4 @@
+# Exclude files that are not needed in the serving image from the Docker build
+# context.
+
+/python/data_processing/audio_utils.py

@@ -1,0 +1,117 @@
+2025-04-17 16:48:55,090:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-17 16:48:55,090:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-17 16:48:55,090:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-17 16:48:55,090:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2025-04-17 16:52:37,815:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:52:37,825:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:52:37,932:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\2793598575.py:29: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:52:37,937:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\2793598575.py:29: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:52:48,118:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\4027258961.py:29: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:52:49,091:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\255517045.py:29: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:53:16,437:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:53:16,437:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:53:16,484:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\3338382685.py:29: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:53:16,486:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\3338382685.py:29: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:54:48,147:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\2022079022.py:72: UserWarning: PySoundFile failed. Trying audioread instead.
+  audio, sample_rate = librosa.load(path, mono=True)
+
+2025-04-17 16:54:48,147:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+
+2025-04-17 16:56:42,632:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\3353689032.py:3: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  annotated_df = annotated_df.fillna('unknown')
+
+2025-04-17 16:56:42,641:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:56:42,641:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:56:42,681:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\1609203659.py:29: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:56:42,690:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\1609203659.py:29: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:57:01,837:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\287448348.py:1: UserWarning: PySoundFile failed. Trying audioread instead.
+  healthy_audio, fs = librosa.load(healthy_sample, mono=True)
+
+2025-04-17 16:57:01,838:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+
+2025-04-17 16:57:22,421:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:57:22,422:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:57:22,551:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\2094563653.py:29: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:57:22,555:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\2094563653.py:29: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:57:27,783:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\287448348.py:1: UserWarning: PySoundFile failed. Trying audioread instead.
+  healthy_audio, fs = librosa.load(healthy_sample, mono=True)
+
+2025-04-17 16:57:27,783:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+
+2025-04-17 16:57:33,804:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\287448348.py:1: UserWarning: PySoundFile failed. Trying audioread instead.
+  healthy_audio, fs = librosa.load(healthy_sample, mono=True)
+
+2025-04-17 16:57:33,804:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+
+2025-04-17 16:57:48,291:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:57:48,291:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\IPython\core\formatters.py:406: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return method()
+
+2025-04-17 16:57:48,451:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\610606891.py:29: FutureWarning: Index.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:57:48,462:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\610606891.py:29: FutureWarning: RangeIndex.format is deprecated and will be removed in a future version. Convert using index.astype(str) or index.map(formatter) instead.
+  return repr(__convert_to_df(table).head(1).to_html(notebook=True, max_cols=None))
+
+2025-04-17 16:57:52,857:WARNING:C:\Users\suvan\AppData\Local\Temp\ipykernel_37124\287448348.py:1: UserWarning: PySoundFile failed. Trying audioread instead.
+  healthy_audio, fs = librosa.load(healthy_sample, mono=True)
+
+2025-04-17 16:57:52,857:WARNING:C:\Users\suvan\PycharmProjects\PythonProject1\.venv\lib\site-packages\librosa\core\audio.py:184: FutureWarning: librosa.core.audio.__audioread_load
+	Deprecated as of librosa version 0.10.0.
+	It will be removed in librosa version 1.0.
+  y, sr_native = __audioread_load(path, offset, duration, dtype)
+

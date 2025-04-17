@@ -1,0 +1,39 @@
+{
+  "overall_accuracy": 0.36666666666666664,
+  "class_accuracy": {
+    "COVID-19": 0.3333333333333333,
+    "healthy": 0.5333333333333333,
+    "symptomatic": 0.23333333333333334
+  },
+  "f1_healthy": 0.41025641025641024,
+  "f1_COVID-19": 0.4,
+  "f1_symptomatic": 0.2692307692307692,
+  "top_5_features": [
+    "mfcc2_mean",
+    "mfcc13_mean",
+    "mfcc12_mean",
+    "mfcc9_mean",
+    "mfcc7_mean"
+  ],
+  "cross_val_accuracy": 0.75,
+  "confusion_matrix": [
+    [
+      16,
+      6,
+      8
+    ],
+    [
+      13,
+      10,
+      7
+    ],
+    [
+      19,
+      4,
+      7
+    ]
+  ],
+  "auc_healthy": 0.5638888888888889,
+  "auc_COVID-19": 0.6025,
+  "auc_symptomatic": 0.465
+}

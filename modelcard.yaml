@@ -1,0 +1,59 @@
+model-index:
+- name: CoughVid-Classifier
+  results:
+  - task:
+      type: audio-classification
+      name: Cough Classification
+    dataset:
+      type: coughvid
+      name: CoughVid Dataset (Balanced Test)
+      split: test
+    metrics:
+    - name: accuracy
+      type: accuracy
+      value: 0.367
+      verified: true
+    - name: auc_COVID-19
+      type: auc
+      value: 0.603
+      verified: true
+    - name: auc_healthy
+      type: auc
+      value: 0.564
+      verified: true
+    - name: auc_symptomatic
+      type: auc
+      value: 0.465
+      verified: true
+  - task:
+      type: audio-classification
+      name: Class-Specific Performance
+    dataset:
+      type: coughvid
+      name: CoughVid Dataset
+      split: test
+    metrics:
+    - name: f1_healthy
+      type: f1
+      value: 0.410
+      verified: true
+    - name: f1_COVID-19
+      type: f1
+      value: 0.400
+      verified: true
+    - name: f1_symptomatic
+      type: f1
+      value: 0.269
+      verified: true
+    - name: healthy_accuracy
+      type: accuracy
+      value: 0.533
+      verified: true
+    - name: COVID-19_accuracy
+      type: accuracy
+      value: 0.333
+      verified: true
+    - name: symptomatic_accuracy
+      type: accuracy
+      value: 0.233
+      verified: true

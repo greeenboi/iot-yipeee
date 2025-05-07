@@ -28,11 +28,12 @@ def setup_leds():
 
 def reset_leds():
     for pin in LED_PINS.values():
-        GPIO.output(pin, GPIO.HIGH)
+        GPIO.output(pin, GPIO.LOW)
 
 def set_led_for_prediction(prediction):
     reset_leds()
     pin = LED_PINS.get(prediction)
+    print(pin)
     if pin:
         GPIO.output(pin, GPIO.LOW)
 

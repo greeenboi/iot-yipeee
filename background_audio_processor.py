@@ -15,9 +15,9 @@ import RPi.GPIO as GPIO
 
 # Define GPIO pins for LEDs
 LED_PINS = {
-    "COVID": 17,
-    "Symptomatic": 27,
-    "Healthy": 22
+    "COVID-19": 17,
+    "symptomatic": 27,
+    "healthy": 22
 }
 
 def setup_leds():

@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import librosa
 import soundfile as sf
-import sounddevice as sd
+import pyaudio
 import wave
 import tempfile
 import shutil
@@ -38,8 +38,10 @@ def set_led_for_prediction(prediction):
 
 
 # Constants for audio recording
+FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 22050  # Standard rate for librosa
+CHUNK = 1024
 RECORD_SECONDS = 30
 TEMP_DIR = os.path.join(tempfile.gettempdir(), "audio_processor")
 
@@ -144,27 +146,42 @@ def record_audio():
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     temp_file = os.path.join(TEMP_DIR, f"audio_snippet_{timestamp}.wav")
 
+    p = pyaudio.PyAudio()
+
     try:
         print(f"Recording {RECORD_SECONDS} seconds of audio...")
 
-        # Record audio using sounddevice
-        # The recording will be a numpy array with shape (samples, channels)
-        recording = sd.rec(
-            int(RECORD_SECONDS * RATE),  # Number of frames
-            samplerate=RATE,
-            channels=CHANNELS,
-            blocking=True  # Wait until recording is finished
-        )
+        stream = p.open(format=FORMAT,
+                        channels=CHANNELS,
+                        rate=RATE,
+                        input=True,
+                        frames_per_buffer=CHUNK)
+
+        frames = []
+
+        for i in range(0, int(RATE / CHUNK * RECORD_SECONDS)):
+            data = stream.read(CHUNK)
+            frames.append(data)
 
         print("Recording complete.")
 
-        # Save the recorded audio to a WAV file using soundfile
-        sf.write(temp_file, recording, RATE)
+        stream.stop_stream()
+        stream.close()
+
+        # Save the recorded audio to a WAV file
+        wf = wave.open(temp_file, 'wb')
+        wf.setnchannels(CHANNELS)
+        wf.setsampwidth(p.get_sample_size(FORMAT))
+        wf.setframerate(RATE)
+        wf.writeframes(b''.join(frames))
+        wf.close()
 
         return temp_file
     except Exception as e:
         print(f"Error recording audio: {e}")
         return None
+    finally:
+        p.terminate()
 
 def cleanup_audio_files():
     """Clean up temporary audio files older than 5 minutes"""

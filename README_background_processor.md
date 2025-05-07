@@ -12,17 +12,17 @@ This is a standalone Python script that continuously records audio in 30-second 
 
 ## Requirements
 
-In addition to the project's existing requirements, you'll need sounddevice for audio recording:
+In addition to the project's existing requirements, you'll need PyAudio for audio recording:
 
 ```bash
-pip install sounddevice
+pip install pyaudio
 ```
 
-Note: sounddevice is generally easier to install than PyAudio and works well on Raspberry Pi. However, it still requires some system dependencies:
+Note: Installing PyAudio might require additional system dependencies:
 
 - **Windows**: Should work with pip install
-- **macOS**: `brew install libsndfile` before pip install
-- **Linux/Raspberry Pi**: `sudo apt-get install libportaudio2 libsndfile1` before pip install
+- **macOS**: `brew install portaudio` before pip install
+- **Linux**: `sudo apt-get install python3-pyaudio` or `sudo apt-get install portaudio19-dev` before pip install
 
 ## Usage
 
@@ -58,6 +58,7 @@ You can modify the following constants at the top of the script:
 - `RECORD_SECONDS`: Duration of each audio snippet (default: 30)
 - `RATE`: Sample rate for audio recording (default: 22050)
 - `CHANNELS`: Number of audio channels (default: 1 for mono)
+- `FORMAT`: Audio format (default: 16-bit PCM)
 - `TEMP_DIR`: Directory for temporary audio files
 
 ## Troubleshooting
@@ -65,10 +66,8 @@ You can modify the following constants at the top of the script:
 If you encounter issues with audio recording:
 
 1. Check that your microphone is properly connected and set as the default recording device
-2. Try adjusting the audio recording parameters (RATE, CHANNELS)
+2. Try adjusting the audio recording parameters (RATE, CHANNELS, FORMAT)
 3. Make sure you have the necessary permissions to access the microphone
-4. On Raspberry Pi, ensure you've installed the required system dependencies: `sudo apt-get install libportaudio2 libsndfile1`
-5. If you get "PortAudio not initialized" errors, try running `sudo modprobe snd-pcm-oss` on Raspberry Pi
 
 If you encounter issues with model prediction:
 

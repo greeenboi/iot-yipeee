@@ -33,7 +33,7 @@ def reset_leds():
 def set_led_for_prediction(prediction):
     reset_leds()
     pin = LED_PINS.get(prediction)
-    print('pin:'+pin)
+    print('pin:',pin)
     if pin:
         GPIO.output(pin, GPIO.LOW)
 

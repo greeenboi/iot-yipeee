@@ -11,6 +11,31 @@ import tempfile
 import shutil
 import datetime
 import threading
+import RPi.GPIO as GPIO
+
+# Define GPIO pins for LEDs
+LED_PINS = {
+    "COVID": 17,
+    "Symptomatic": 27,
+    "Healthy": 22
+}
+
+def setup_leds():
+    GPIO.setmode(GPIO.BCM)
+    for pin in LED_PINS.values():
+        GPIO.setup(pin, GPIO.OUT)
+        GPIO.output(pin, GPIO.LOW)
+
+def reset_leds():
+    for pin in LED_PINS.values():
+        GPIO.output(pin, GPIO.LOW)
+
+def set_led_for_prediction(prediction):
+    reset_leds()
+    pin = LED_PINS.get(prediction)
+    if pin:
+        GPIO.output(pin, GPIO.HIGH)
+
 
 # Constants for audio recording
 CHANNELS = 1
@@ -168,6 +193,7 @@ def main():
     # Start cleanup thread
     cleanup_thread_instance = threading.Thread(target=cleanup_thread, daemon=True)
     cleanup_thread_instance.start()
+    setup_leds()
 
     try:
         while True:
@@ -188,6 +214,8 @@ def main():
                     for cls, prob in class_probs.items():
                         print(f"  {cls}: {prob:.4f}")
                     print("="*50 + "\n")
+                    
+                    set_led_for_prediction(prediction)
 
             # Small delay before next recording
             time.sleep(1)
@@ -197,7 +225,7 @@ def main():
     finally:
         # Final cleanup
         cleanup_audio_files()
-
+        GPIO.cleanup()
         # Try to remove the temp directory
         try:
             shutil.rmtree(TEMP_DIR)

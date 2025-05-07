@@ -43,7 +43,7 @@ FORMAT = pyaudio.paInt16
 CHANNELS = 1
 RATE = 22050  # Standard rate for librosa
 CHUNK = 1024
-RECORD_SECONDS = 30
+RECORD_SECONDS = 15
 TEMP_DIR = os.path.join(tempfile.gettempdir(), "audio_processor")
 
 # Create temp directory if it doesn't exist

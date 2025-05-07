@@ -24,7 +24,7 @@ def setup_leds():
     GPIO.setmode(GPIO.BCM)
     for pin in LED_PINS.values():
         GPIO.setup(pin, GPIO.OUT)
-        GPIO.output(pin, GPIO.HIGH)
+        GPIO.output(pin, GPIO.LOW)
 
 def reset_leds():
     for pin in LED_PINS.values():
@@ -36,7 +36,7 @@ def set_led_for_prediction(prediction):
     print('prediction:',prediction)
     print('pin:',pin)
     if pin:
-        GPIO.output(pin, GPIO.LOW)
+        GPIO.output(pin, GPIO.HIGH)
 
 
 # Constants for audio recording

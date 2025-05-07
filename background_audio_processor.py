@@ -29,6 +29,49 @@ def load_model(model_path='cough_classification_model.pkl'):
         components = pickle.load(f)
     return components
 
+def segment_cough(x, fs, cough_padding=0.2, min_cough_len=0.2, th_l_multiplier=0.1, th_h_multiplier=2):
+    """Segment audio into individual coughs using a hysteresis comparator on the signal power"""
+    cough_mask = np.array([False]*len(x))
+
+    # Define hysteresis thresholds
+    rms = np.sqrt(np.mean(np.square(x)))
+    seg_th_l = th_l_multiplier * rms
+    seg_th_h = th_h_multiplier * rms
+
+    # Segment coughs
+    coughSegments = []
+    padding = round(fs*cough_padding)
+    min_cough_samples = round(fs*min_cough_len)
+    cough_start = 0
+    cough_end = 0
+    cough_in_progress = False
+    tolerance = round(0.01*fs)
+    below_th_counter = 0
+
+    for i, sample in enumerate(x**2):
+        if cough_in_progress:
+            if sample < seg_th_l:
+                below_th_counter += 1
+                if below_th_counter > tolerance:
+                    cough_end = i+padding if (i+padding < len(x)) else len(x)-1
+                    cough_in_progress = False
+                    if (cough_end+1-cough_start-2*padding > min_cough_samples):
+                        coughSegments.append(x[cough_start:cough_end+1])
+                        cough_mask[cough_start:cough_end+1] = True
+            elif i == (len(x)-1):
+                cough_end = i
+                cough_in_progress = False
+                if (cough_end+1-cough_start-2*padding > min_cough_samples):
+                    coughSegments.append(x[cough_start:cough_end+1])
+            else:
+                below_th_counter = 0
+        else:
+            if sample > seg_th_h:
+                cough_start = i-padding if (i-padding >= 0) else 0
+                cough_in_progress = True
+
+    return coughSegments, cough_mask
+
 def extract_all_features(audio_path, sample_rate=None):
     """Extract comprehensive set of audio features"""
     # Load audio file
@@ -86,6 +129,19 @@ def extract_all_features(audio_path, sample_rate=None):
 def process_audio_file(audio_file):
     """Process audio file and return prediction"""
     try:
+        # Load audio file
+        y, sr = librosa.load(audio_file, sr=None)
+
+        # Check if audio contains cough sounds
+        cough_segments, cough_mask = segment_cough(y, sr)
+
+        # If no cough segments detected, return "no_cough" result
+        if len(cough_segments) == 0:
+            print(f"No cough detected in audio file: {audio_file}")
+            return "no_cough", {"no_cough": 1.0}
+
+        print(f"Detected {len(cough_segments)} cough segments in audio file: {audio_file}")
+
         # Extract features
         features = extract_all_features(audio_file)
 
@@ -200,10 +256,14 @@ def main():
                     print("\n" + "="*50)
                     print(f"Timestamp: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
                     print(f"Audio file: {os.path.basename(audio_file)}")
-                    print(f"Prediction: {prediction}")
-                    print("Probabilities:")
-                    for cls, prob in class_probs.items():
-                        print(f"  {cls}: {prob:.4f}")
+
+                    if prediction == "no_cough":
+                        print("Result: No cough detected in the audio")
+                    else:
+                        print(f"Prediction: {prediction}")
+                        print("Probabilities:")
+                        for cls, prob in class_probs.items():
+                            print(f"  {cls}: {prob:.4f}")
                     print("="*50 + "\n")
 
             # Small delay before next recording

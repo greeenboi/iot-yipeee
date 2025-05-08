@@ -152,8 +152,9 @@ def extract_all_features(audio_path, sample_rate=None):
 
     return features
 
+
 def process_audio_file(audio_file):
-    """Process audio file and return prediction"""
+    """Process audio file and return prediction with reduced COVID-19 sensitivity"""
     try:
         # Load audio file
         y, sr = librosa.load(audio_file, sr=None)
@@ -182,16 +183,39 @@ def process_audio_file(audio_file):
         # Scale features
         features_scaled = model_components['scaler'].transform(features_df)
 
-        # Predict
-        prediction_idx = model_components['model'].predict(features_scaled)[0]
-        prediction = model_components['label_encoder'].inverse_transform([prediction_idx])[0]
-
         # Get probabilities
         probs = model_components['model'].predict_proba(features_scaled)[0]
+
+        # Get class labels
+        class_labels = model_components['label_encoder'].inverse_transform(range(len(probs)))
+
+        # Create dictionary of class probabilities
         class_probs = {
-            model_components['label_encoder'].inverse_transform([i])[0]: float(prob)
+            class_labels[i]: float(prob)
             for i, prob in enumerate(probs)
         }
+
+        # Add bias against COVID-19 classification
+        # Increase threshold for COVID-19 classification (require higher confidence)
+        covid_index = list(class_labels).index("COVID-19") if "COVID-19" in class_labels else -1
+
+        # Modified decision logic to reduce COVID-19 classifications
+        if covid_index >= 0:
+            # Apply a higher threshold for COVID-19 (e.g., require 20% more confidence)
+            covid_threshold = 0.20  # Additional confidence needed
+
+            # If COVID-19 probability is the highest but not significantly higher than others
+            if probs[covid_index] == max(probs) and probs[covid_index] < (
+                    max([p for i, p in enumerate(probs) if i != covid_index]) + covid_threshold):
+                # Find the second highest probability class
+                probs_copy = probs.copy()
+                probs_copy[covid_index] = 0
+                second_best_idx = np.argmax(probs_copy)
+                prediction = class_labels[second_best_idx]
+            else:
+                prediction = class_labels[np.argmax(probs)]
+        else:
+            prediction = class_labels[np.argmax(probs)]
 
         return prediction, class_probs
     except Exception as e:
